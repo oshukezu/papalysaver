@@ -1,9 +1,10 @@
 # Papaly Saver
 
 這是一個非官方開源的 Chrome 擴充功能，基於最新 Chrome Manifest V3 規範重新打造。
+
 This is an unofficial, open-source Chrome extension rebuilt based on the latest Chrome Manifest V3 specification.
 
-*   **專案監製/設計 (Created by)**: J.J. Wang
+*   **專案監製/設計 (Created by)**: [J.J. Wang](https://www.linkedin.com/in/oshukezu/)
 *   **語言導航 (Navigation)**: [繁體中文](#繁體中文) | [English](#english)
 
 ---

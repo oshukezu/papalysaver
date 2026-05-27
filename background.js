@@ -114,9 +114,9 @@ async function checkAndUpdateIcon(tabId, url) {
       chrome.action.setIcon({
         tabId: tabId,
         path: {
-          "16": "icon_gray16.png",
-          "48": "icon_gray48.png",
-          "128": "icon_gray128.png"
+          "16": "icons/icon_gray16.png",
+          "48": "icons/icon_gray48.png",
+          "128": "icons/icon_gray128.png"
         }
       }, () => { const err = chrome.runtime.lastError; });
       chrome.action.setBadgeText({ text: '', tabId: tabId }, () => { const err = chrome.runtime.lastError; });
@@ -146,18 +146,18 @@ async function checkAndUpdateIcon(tabId, url) {
       chrome.action.setIcon({
         tabId: tabId,
         path: {
-          "16": "icon_pink16.png",
-          "48": "icon_pink48.png",
-          "128": "icon_pink128.png"
+          "16": "icons/icon_pink16.png",
+          "48": "icons/icon_pink48.png",
+          "128": "icons/icon_pink128.png"
         }
       }, () => { const err = chrome.runtime.lastError; });
     } else {
       chrome.action.setIcon({
         tabId: tabId,
         path: {
-          "16": "icon_gray16.png",
-          "48": "icon_gray48.png",
-          "128": "icon_gray128.png"
+          "16": "icons/icon_gray16.png",
+          "48": "icons/icon_gray48.png",
+          "128": "icons/icon_gray128.png"
         }
       }, () => { const err = chrome.runtime.lastError; });
     }

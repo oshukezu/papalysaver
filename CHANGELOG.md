@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.2] - 2026-05-28
+### Changed
+- 整理專案結構，將所有圖示搬移至 `icons/` 目錄並更新代碼引用路徑。
+
 ## [1.0.1] - 2026-05-28
 ### Added
 - "Papalysaver" branding and updated English description.

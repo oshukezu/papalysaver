@@ -18,17 +18,17 @@
     "*://*.papaly.com/*"
   ],
   "icons": {
-    "16": "icon_gray16.png",
-    "48": "icon_gray48.png",
-    "128": "icon_gray128.png"
+    "16": "icons/icon_gray16.png",
+    "48": "icons/icon_gray48.png",
+    "128": "icons/icon_gray128.png"
   },
   "action": {
     "default_popup": "popup/popup.html",
     "default_title": "儲存至 Papaly",
     "default_icon": {
-      "16": "icon_gray16.png",
-      "48": "icon_gray48.png",
-      "128": "icon_gray128.png"
+      "16": "icons/icon_gray16.png",
+      "48": "icons/icon_gray48.png",
+      "128": "icons/icon_gray128.png"
     }
   },
   "background": {

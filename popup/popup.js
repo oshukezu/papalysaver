@@ -131,9 +131,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             chrome.action.setIcon({
               tabId: activeTab.id,
               path: {
-                "16": "../icon_pink16.png",
-                "48": "../icon_pink48.png",
-                "128": "../icon_pink128.png"
+                "16": "../icons/icon_pink16.png",
+                "48": "../icons/icon_pink48.png",
+                "128": "../icons/icon_pink128.png"
               }
             }, () => { const err = chrome.runtime.lastError; });
             chrome.action.setBadgeText({ text: '', tabId: activeTab.id }, () => { const err = chrome.runtime.lastError; });
