@@ -1,0 +1,52 @@
+name: Pack and Build Papalysaver Extension
+
+on:
+  push:
+    tags:
+      - 'v*' # 當推送如 v1.0.0, v1.1.0 等標籤時自動觸發
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # 賦予腳本寫入 Release 的權限
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Pack Extension Directory to Zip
+        run: |
+          # 建立一個乾淨的發佈目錄，避免把 Git 歷史紀錄或 GitHub 設定檔一起打包進去
+          mkdir -p dist
+          
+          # 將需要的專案檔案與資料夾複製到 dist（請根據你的實際目錄結構增減，例如若有 options/ 也要加上）
+          cp -r manifest.json background.js popup/ options/ dist/ 2>/dev/null || cp -r manifest.json background.js popup/ dist/
+          
+          # 進入 dist 目錄進行壓縮，確保解壓縮後的根目錄直接是 manifest.json
+          cd dist
+          zip -r ../papalysaver-${{ github.ref_name }}.zip .
+          cd ..
+          
+          echo "Packaging complete: papalysaver-${{ github.ref_name }}.zip"
+
+      - name: Create GitHub Release and Upload Artifact
+        uses: softprops/action-gh-release@v2
+        with:
+          files: papalysaver-${{ github.ref_name }}.zip
+          name: Release ${{ github.ref_name }}
+          body: |
+            ### Papalysaver Chrome Extension Official Release
+            
+            This artifact is automatically compiled by GitHub Actions.
+            
+            #### How to Install:
+            1. Download the `papalysaver-${{ github.ref_name }}.zip` asset below.
+            2. Unzip the file on your local machine.
+            3. Open Chrome and navigate to `chrome://extensions/`.
+            4. Enable **Developer mode** (top-right toggle).
+            5. Click **Load unpacked** (top-left button) and select the unzipped folder.
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # 使用 GitHub 內建的 Token，免手動設定隱私變數
