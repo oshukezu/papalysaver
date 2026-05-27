@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [1.0.0] - 2026-05-28
+## [1.0.1] - 2026-05-28
 ### Added
 - "Papalysaver" branding and updated English description.
 - Transformed core architecture into a Local-First visual board (Offline-First).
