@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>儲存至 Papaly</title>
+  <link rel="stylesheet" href="popup.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <div class="logo-icon"></div>
+        <h1>Papaly Saver</h1>
+      </div>
+      <button id="settingsBtn" class="icon-btn" title="設定" aria-label="設定">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+        </svg>
+      </button>
+    </header>
+
+    <main id="mainContent">
+      <div id="loginPrompt" class="hidden" style="text-align: center; padding: 30px 20px;">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 16px;">
+          <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+          <polyline points="10 17 15 12 10 7"></polyline>
+          <line x1="15" y1="12" x2="3" y2="12"></line>
+        </svg>
+        <p style="margin-bottom: 20px; color: #666; font-size: 14px; line-height: 1.5;">您尚未登入或註冊 Papaly<br>請先完成登入以同步您的畫布與分類。</p>
+        <a href="https://papaly.com/login" target="_blank" class="primary-btn" style="display: inline-block; text-decoration: none; padding: 10px 24px; border-radius: 6px; font-weight: 500;">前往登入 / 註冊</a>
+      </div>
+
+      <div id="formContent">
+        <div class="form-group">
+        <label for="titleInput">標題</label>
+        <input type="text" id="titleInput" placeholder="網頁標題..." autocomplete="off">
+      </div>
+
+      <div class="form-group">
+        <label for="urlInput">網址</label>
+        <input type="url" id="urlInput" placeholder="https://..." autocomplete="off" readonly>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group half">
+          <label for="boardSelect">畫布 (Board)</label>
+          <div class="select-wrapper">
+            <select id="boardSelect">
+              <option value="" disabled selected>載入中...</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group half">
+          <label for="categorySelect">分類 (Category)</label>
+          <div class="select-wrapper">
+            <select id="categorySelect" disabled>
+              <option value="" disabled selected>請先選擇畫布</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      </div>
+      <div id="statusMessage" class="status-message hidden"></div>
+    </main>
+
+    <footer id="mainFooter">
+      <button id="saveBtn" class="primary-btn">
+        <span>儲存書籤</span>
+        <kbd>↵</kbd>
+      </button>
+      <div class="disclaimer" style="font-size: 10px; color: #999; margin-top: 10px; text-align: center; line-height: 1.4;">
+        <p style="margin: 0;">免責聲明：本專案為開源工具，非 Papaly 官方開發或授權。風險由使用者自負。</p>
+        <p style="margin: 2px 0 0 0;">Disclaimer: This open-source tool is NOT officially developed or authorized by Papaly. Use at your own risk.</p>
+        <p style="margin: 4px 0 0 0; color: #6366f1; font-weight: 500;">Designed and Maintained by J.J. Wang</p>
+      </div>
+    </footer>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+{
+  "manifest_version": 3,
+  "name": "Papaly Saver",
+  "version": "1.0.0",
+  "description": "__MSG_extDescription__",
+  "default_locale": "zh_TW",
+  "author": "J.J. Wang",
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "storage",
+    "alarms",
+    "cookies",
+    "downloads"
+  ],
+  "host_permissions": [
+    "*://papaly.com/*",
+    "*://*.papaly.com/*"
+  ],
+  "icons": {
+    "16": "icon_gray16.png",
+    "48": "icon_gray48.png",
+    "128": "icon_gray128.png"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "儲存至 Papaly",
+    "default_icon": {
+      "16": "icon_gray16.png",
+      "48": "icon_gray48.png",
+      "128": "icon_gray128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "options_page": "options/options.html",
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+P",
+        "mac": "Command+Shift+P"
+      },
+      "description": "開啟儲存面板"
+    }
+  }
+}

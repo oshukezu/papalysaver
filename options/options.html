@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Papaly Saver 設定</title>
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #f8fafc;
+      color: #1e293b;
+      margin: 0;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+    }
+    .container {
+      background: white;
+      padding: 32px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      width: 100%;
+      max-width: 500px;
+    }
+    h1 {
+      margin-top: 0;
+      font-size: 24px;
+      margin-bottom: 24px;
+      color: #0f172a;
+      border-bottom: 2px solid #6366f1;
+      padding-bottom: 12px;
+    }
+    .form-group {
+      margin-bottom: 24px;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      color: #334155;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-size: 14px;
+      box-sizing: border-box;
+      transition: border-color 0.2s;
+    }
+    input[type="text"]:focus {
+      outline: none;
+      border-color: #6366f1;
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    }
+    .help-text {
+      font-size: 12px;
+      color: #64748b;
+      margin-top: 6px;
+      line-height: 1.4;
+    }
+    button {
+      background: #6366f1;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 6px;
+      font-weight: 500;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.2s, opacity 0.2s;
+      display: inline-block;
+      text-align: center;
+    }
+    button:hover {
+      background: #4f46e5;
+    }
+    .btn-block {
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .status {
+      margin-top: 16px;
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 14px;
+      display: none;
+      line-height: 1.4;
+    }
+    .status.success {
+      display: block;
+      background: #ecfdf5;
+      color: #059669;
+      border: 1px solid #a7f3d0;
+    }
+    .status.error {
+      display: block;
+      background: #fef2f2;
+      color: #dc2626;
+      border: 1px solid #fecaca;
+    }
+    .status.info {
+      display: block;
+      background: #eff6ff;
+      color: #2563eb;
+      border: 1px solid #bfdbfe;
+    }
+    .import-section {
+      background: #fafafa;
+      border: 1px dashed #cbd5e1;
+      padding: 16px;
+      border-radius: 8px;
+      margin-top: 12px;
+    }
+    pre {
+      background: #f1f5f9;
+      padding: 8px;
+      border-radius: 4px;
+      overflow-x: auto;
+      font-family: monospace;
+      font-size: 11px;
+      border: 1px solid #e2e8f0;
+      margin: 0;
+      white-space: pre-wrap;
+      word-break: break-all;
+      color: #334155;
+      max-height: 100px;
+    }
+    .divider {
+      height: 1px;
+      background-color: #e2e8f0;
+      margin: 28px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Papaly Saver 設定</h1>
+    
+    <!-- 1. 匯入與導出區 (放置於上方) -->
+    <div class="form-group">
+      <label>匯入與導出</label>
+      
+      <div style="margin-bottom: 16px;">
+        <div style="display: flex; gap: 10px; margin-bottom: 8px;">
+          <button id="exportHtmlBtn" style="background: #4f46e5; flex: 1; padding: 12px 16px; font-weight: 600;">導出為 HTML 書籤</button>
+          <button id="exportMdBtn" style="background: #0ea5e9; flex: 1; padding: 12px 16px; font-weight: 600;">導出為 MD 書籤</button>
+        </div>
+        <div class="help-text">將從 papaly.com 讀取您目前所有的雲端書籤，並導出成標準 HTML 或是 Markdown 格式檔案。</div>
+      </div>
+
+      <div class="import-section">
+        <label style="font-size: 13px; color: #475569; margin-bottom: 8px;">批次匯入書籤 (.txt / .md)</label>
+        <input type="file" id="importFile" accept=".txt,.md" style="display: none;">
+        <button id="chooseFileBtn" class="btn-block" style="background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; padding: 8px 12px;">選擇檔案匯入</button>
+        <div class="help-text" style="margin-bottom: 12px;">匯入的書籤將會暫存並在背景自動同步至您的 Papaly 帳號。</div>
+
+        <div style="font-size: 12px; color: #64748b;">
+          <div style="font-weight: 600; margin-bottom: 6px; color: #475569;">格式範例 (可複製參考)：</div>
+          <div style="display: flex; gap: 6px; margin-bottom: 8px;">
+            <button id="copyTxtExample" style="background: #e2e8f0; color: #334155; font-size: 11px; padding: 3px 8px; border-radius: 4px; border: none; cursor: pointer;">複製 TXT 範例</button>
+            <button id="copyMdExample" style="background: #e2e8f0; color: #334155; font-size: 11px; padding: 3px 8px; border-radius: 4px; border: none; cursor: pointer;">複製 MD 範例</button>
+          </div>
+          <pre id="exampleContainer"></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 2. API Token 設定區 (放置於下方) -->
+    <div class="form-group">
+      <label for="apiToken">API Token 設定</label>
+      <input type="text" id="apiToken" placeholder="輸入您的 Papaly API Token...">
+      <div class="help-text">用於身分驗證與串接您的畫布與分類資料。</div>
+      <button id="saveBtn" style="margin-top: 12px; width: 100%;">儲存設定</button>
+    </div>
+
+    <div id="statusMsg" class="status"></div>
+
+    <div style="text-align: center; margin-top: 32px; font-size: 11px; color: #94a3b8; font-weight: 500;">
+      Papaly Saver by J.J. Wang
+    </div>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>
