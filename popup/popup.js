@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       return { boards, categories };
     } catch (err) {
-      console.error(err);
+      console.warn("Papaly user is not logged in yet:", err.message);
       
       // 隱藏主要表單與 Footer，顯示專屬的登入提示畫面
       document.getElementById('formContent').classList.add('hidden');
