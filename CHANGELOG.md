@@ -6,6 +6,9 @@ All notable changes to this project will be documented in this file.
 ### Changed
 - 整理專案結構，將所有圖示搬移至 `icons/` 目錄並更新代碼引用路徑。
 
+### 🎂 Special Dedication
+- **Happy Birthday** to the love of my life—my junior high classmate, Nella’s mom, and the proud owner of the ragdoll monkey plush "A-Wan"! ❤️
+
 ## [1.0.1] - 2026-05-28
 ### Added
 - "Papalysaver" branding and updated English description.
